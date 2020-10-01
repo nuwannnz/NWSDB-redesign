@@ -10,6 +10,7 @@ import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import InterruptionsScreen from "./screens/InterruptionsScreen";
+import UserComplaintScreen from "./screens/UserComplaintScreen";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
         />
         <Stack.Screen name={SCREENS.LOGIN_SCREEN} component={LoginScreen} />
         <Stack.Screen name={SCREENS.SIGNUP_SCREEN} component={SignUpScreen} />
+        <Stack.Screen name={SCREENS.USER_COMPLAINT_SCREEN} component={UserComplaintScreen} />
         <Stack.Screen
           name={SCREENS.DASHBOARD_SCREEN}
           component={DashboardScreen}

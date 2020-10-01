@@ -32,6 +32,12 @@ export default function DashboardScreen() {
             navigation.navigate(SCREENS.INTERRUPTIONS_SCREEN);
           }}
         />
+         <Button
+          title="Complaint"
+          onPress={() => {
+            navigation.navigate(SCREENS.USER_COMPLAINT_SCREEN);
+          }}
+        />
       </View>
       <View>
         <Button
