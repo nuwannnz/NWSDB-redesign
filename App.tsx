@@ -10,23 +10,18 @@ import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import InterruptionsScreen from "./screens/InterruptionsScreen";
-import Header from "./components/header/Header";
+import ManageAccountScreen from "./screens/ManageAccountScreen";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerTitle: (props) => <Header {...props} />,
-          headerLeft: (props) => null,
-        }}
-      >
+      <Stack.Navigator>
         <Stack.Screen
           name={SCREENS.START_SCREEN}
           component={StartScreen}
-          options={{ title: "NWSDB" }}
+          options={{ title: "Start screen" }}
         />
         <Stack.Screen name={SCREENS.LOGIN_SCREEN} component={LoginScreen} />
         <Stack.Screen name={SCREENS.SIGNUP_SCREEN} component={SignUpScreen} />
@@ -37,6 +32,10 @@ export default function App() {
         <Stack.Screen
           name={SCREENS.INTERRUPTIONS_SCREEN}
           component={InterruptionsScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.MANAGE_ACCOUNTS}
+          component={ManageAccountScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
