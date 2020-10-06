@@ -11,6 +11,7 @@ import SignUpScreen from "./screens/SignUpScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import InterruptionsScreen from "./screens/InterruptionsScreen";
 import ManageAccountScreen from "./screens/ManageAccountScreen";
+import EbillServiceScreen from "./screens/EbillServiceScreen";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,10 @@ export default function App() {
         <Stack.Screen
           name={SCREENS.MANAGE_ACCOUNTS}
           component={ManageAccountScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.EBILL_SERVICES}
+          component={EbillServiceScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
