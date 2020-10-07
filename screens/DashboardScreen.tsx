@@ -38,6 +38,14 @@ export default function DashboardScreen() {
             navigation.navigate(SCREENS.USER_COMPLAINT_SCREEN);
           }}
         />
+        <View>
+        <Button
+          title="Meter reading"
+          onPress={() => {
+            navigation.navigate(SCREENS.METER_READING_SCREEN);
+          }}
+        />
+      </View>
       </View>
       <View>
         <Button
@@ -47,6 +55,7 @@ export default function DashboardScreen() {
           }}
         />
       </View>
+      
     </View>
   );
 }
