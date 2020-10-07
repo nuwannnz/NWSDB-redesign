@@ -32,6 +32,18 @@ export default function DashboardScreen() {
             navigation.navigate(SCREENS.INTERRUPTIONS_SCREEN);
           }}
         />
+        <Button
+          title="Accounts"
+          onPress={() => {
+            navigation.navigate(SCREENS.MANAGE_ACCOUNTS);
+          }}
+        />
+        <Button
+          title="E-Bill Service"
+          onPress={() => {
+            navigation.navigate(SCREENS.EBILL_SERVICES);
+          }}
+        />
       </View>
       <View>
         <Button
