@@ -10,7 +10,6 @@ import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import InterruptionsScreen from "./screens/InterruptionsScreen";
-import UserComplaintScreen from "./screens/UserComplaintScreen";
 import ComplaintsNavigator from "./components/complaintments/ComplaintsNavigator";
 import MeterReadingScreen from "./screens/MeterReadingScreen";
 
@@ -27,8 +26,14 @@ export default function App() {
         />
         <Stack.Screen name={SCREENS.LOGIN_SCREEN} component={LoginScreen} />
         <Stack.Screen name={SCREENS.SIGNUP_SCREEN} component={SignUpScreen} />
-        <Stack.Screen name={SCREENS.USER_COMPLAINT_SCREEN} component={ComplaintsNavigator} />
-        <Stack.Screen name={SCREENS.METER_READING_SCREEN} component={MeterReadingScreen} />
+        <Stack.Screen
+          name={SCREENS.USER_COMPLAINT_SCREEN}
+          component={ComplaintsNavigator}
+        />
+        <Stack.Screen
+          name={SCREENS.METER_READING_SCREEN}
+          component={MeterReadingScreen}
+        />
         <Stack.Screen
           name={SCREENS.DASHBOARD_SCREEN}
           component={DashboardScreen}
