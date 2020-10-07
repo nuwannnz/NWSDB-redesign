@@ -36,6 +36,7 @@ export default function App() {
         />
         <Stack.Screen
           name={SCREENS.INTERRUPTIONS_SCREEN}
+          options={{ title: "Interruptions " }}
           component={InterruptionsScreen}
         />
       </Stack.Navigator>
