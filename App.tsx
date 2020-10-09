@@ -11,6 +11,7 @@ import SignUpScreen from "./screens/SignUpScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import InterruptionsScreen from "./screens/InterruptionsScreen";
 import Header from "./components/header/Header";
+import BillingHistoryScreen from "./screens/BillingHistoryScreen";
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,11 @@ export default function App() {
           name={SCREENS.INTERRUPTIONS_SCREEN}
           options={{ title: "Interruptions" }}
           component={InterruptionsScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.BILLING_SCREEN}
+          options={{ title: "Billing history" }}
+          component={BillingHistoryScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

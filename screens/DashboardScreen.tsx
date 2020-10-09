@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { SCREENS } from "../constants/screens";
 
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
 
 export default function DashboardScreen() {
   const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View>
@@ -30,6 +31,12 @@ export default function DashboardScreen() {
           title="Interruptions"
           onPress={() => {
             navigation.navigate(SCREENS.INTERRUPTIONS_SCREEN);
+          }}
+        />
+        <Button
+          title="Billing history"
+          onPress={() => {
+            navigation.navigate(SCREENS.BILLING_SCREEN);
           }}
         />
       </View>
