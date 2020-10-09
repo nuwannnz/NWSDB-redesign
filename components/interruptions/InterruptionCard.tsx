@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
+import { COLORS } from "../../constants/styles";
 
 const InterruptionCardStyles = StyleSheet.create({
   wrapper: {
@@ -9,7 +10,7 @@ const InterruptionCardStyles = StyleSheet.create({
   },
   dateWrapper: {
     padding: 5,
-    backgroundColor: "#ccc",
+    backgroundColor: "#86b1db",
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
     elevation: 3,
@@ -18,7 +19,7 @@ const InterruptionCardStyles = StyleSheet.create({
     padding: 5,
     display: "flex",
     width: "100%",
-    backgroundColor: "#ddd",
+    backgroundColor: "#d8ecff",
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
     elevation: 3,
@@ -26,6 +27,7 @@ const InterruptionCardStyles = StyleSheet.create({
   dateText: {
     fontWeight: "bold",
     fontSize: 20,
+    color: "#000",
   },
   titleText: {
     fontSize: 18,
