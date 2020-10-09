@@ -32,11 +32,12 @@ export default function App() {
         <Stack.Screen name={SCREENS.SIGNUP_SCREEN} component={SignUpScreen} />
         <Stack.Screen
           name={SCREENS.DASHBOARD_SCREEN}
+          options={{ title: "Dashboard" }}
           component={DashboardScreen}
         />
         <Stack.Screen
           name={SCREENS.INTERRUPTIONS_SCREEN}
-          options={{ title: "Interruptions " }}
+          options={{ title: "Interruptions" }}
           component={InterruptionsScreen}
         />
       </Stack.Navigator>
