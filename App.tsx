@@ -15,22 +15,19 @@ import ForgotPwdStep2 from "./screens/ForgotPwdStep2";
 import ForgotPwdStep3 from "./screens/ForgotPwdStep3";
 import SignUpScreen from "./screens/SignUpScreen";
 import LoginForm from "./screens/LoginForm";
+import ManageAccountScreen from "./screens/ManageAccountScreen";
+import EbillServiceScreen from "./screens/EbillServiceScreen";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerTitle: (props) => <Header {...props} />,
-          headerLeft: (props) => null,
-        }}
-      >
+      <Stack.Navigator>
         <Stack.Screen
           name={SCREENS.START_SCREEN}
           component={StartScreen}
-          options={{ title: "NWSDB" }}
+          options={{ title: "Start screen" }}
         />
         <Stack.Screen
           name={SCREENS.LOGIN_SCREEN}
@@ -44,18 +41,19 @@ export default function App() {
         />
         <Stack.Screen
           name={SCREENS.DASHBOARD_SCREEN}
-          options={{ title: "Dashboard" }}
           component={DashboardScreen}
         />
         <Stack.Screen
           name={SCREENS.INTERRUPTIONS_SCREEN}
-          options={{ title: "Interruptions" }}
           component={InterruptionsScreen}
         />
         <Stack.Screen
-          name={SCREENS.BILLING_SCREEN}
-          options={{ title: "Billing history" }}
-          component={BillingHistoryScreen}
+          name={SCREENS.MANAGE_ACCOUNTS}
+          component={ManageAccountScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.EBILL_SERVICES}
+          component={EbillServiceScreen}
         />
         <Stack.Screen
           name={SCREENS.FORGOT_PWD_SCREEN_1}

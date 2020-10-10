@@ -30,6 +30,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  fullHeight: {
+    height: "100%",
+  },
+  bottomBtnWrap: {
+    display: "flex",
+    flexDirection: "row",
+    width: "100%",
+  },
+  btn: {
+    flex: 1,
+  },
 });
 
 export default function StartScreen() {

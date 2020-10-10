@@ -122,9 +122,15 @@ export default function DashboardScreen() {
           }}
         />
         <Button
-          title="Billing history"
+          title="Accounts"
           onPress={() => {
-            navigation.navigate(SCREENS.BILLING_SCREEN);
+            navigation.navigate(SCREENS.MANAGE_ACCOUNTS);
+          }}
+        />
+        <Button
+          title="E-Bill Service"
+          onPress={() => {
+            navigation.navigate(SCREENS.EBILL_SERVICES);
           }}
         />
       </View>
