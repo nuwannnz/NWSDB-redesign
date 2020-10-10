@@ -6,12 +6,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SCREENS } from "./constants/screens";
 import StartScreen from "./screens/StartScreen";
-import LoginScreen from "./screens/LoginScreen";
-import SignUpScreen from "./screens/SignUpScreen";
 import DashboardScreen from "./screens/DashboardScreen";
 import InterruptionsScreen from "./screens/InterruptionsScreen";
 import Header from "./components/header/Header";
 import BillingHistoryScreen from "./screens/BillingHistoryScreen";
+import ForgotPwdStep1 from "./screens/ForgotPwdStep1";
+import ForgotPwdStep2 from "./screens/ForgotPwdStep2";
+import ForgotPwdStep3 from "./screens/ForgotPwdStep3";
+import SignUpScreen from "./screens/SignUpScreen";
+import LoginForm from "./screens/LoginForm";
 
 const Stack = createStackNavigator();
 
@@ -29,8 +32,16 @@ export default function App() {
           component={StartScreen}
           options={{ title: "NWSDB" }}
         />
-        <Stack.Screen name={SCREENS.LOGIN_SCREEN} component={LoginScreen} />
-        <Stack.Screen name={SCREENS.SIGNUP_SCREEN} component={SignUpScreen} />
+        <Stack.Screen
+          name={SCREENS.LOGIN_SCREEN}
+          component={LoginForm}
+          options={{ title: "NWSDB" }}
+        />
+        <Stack.Screen
+          name={SCREENS.SIGNUP_SCREEN}
+          component={SignUpScreen}
+          options={{ title: "NWSDB" }}
+        />
         <Stack.Screen
           name={SCREENS.DASHBOARD_SCREEN}
           options={{ title: "Dashboard" }}
@@ -45,6 +56,21 @@ export default function App() {
           name={SCREENS.BILLING_SCREEN}
           options={{ title: "Billing history" }}
           component={BillingHistoryScreen}
+        />
+        <Stack.Screen
+          name={SCREENS.FORGOT_PWD_SCREEN_1}
+          component={ForgotPwdStep1}
+          options={{ title: "NWSDB" }}
+        />
+        <Stack.Screen
+          name={SCREENS.FORGOT_PWD_SCREEN_2}
+          component={ForgotPwdStep2}
+          options={{ title: "NWSDB" }}
+        />
+        <Stack.Screen
+          name={SCREENS.FORGOT_PWD_SCREEN_3}
+          component={ForgotPwdStep3}
+          options={{ title: "NWSDB" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

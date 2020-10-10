@@ -15,4 +15,22 @@ export const BTN_STYLE = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  ACCENT_DENGER_BUTTON: {
+    backgroundColor: "#dc3545",
+    borderColor: "#dc3545",
+    borderRadius: 4,
+    elevation: 3,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  ACCENT_WARNING_BUTTON: {
+    backgroundColor: "#ffc107",
+    borderColor: "#ffc107",
+    borderRadius: 4,
+    elevation: 3,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
