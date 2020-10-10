@@ -58,7 +58,7 @@ export default function UserComplaintScreen() {
     },
     statusBox: {
       padding: 30,
-      backgroundColor: "#2FD800",
+      backgroundColor: "#75BAFF",
       borderColor: "black",
       borderRadius: 5,
     },
@@ -106,9 +106,8 @@ export default function UserComplaintScreen() {
             onPress={() =>
               clickAccount(item.number, item.personName, item.address)
             }
-          >
-            {" "}
-          </Button>
+          />
+        
         )}
       />
 
@@ -164,7 +163,7 @@ export default function UserComplaintScreen() {
         </View>
       </Modal>
 
-      <MaterialIcons name="add" size={24} onPress={() => setModalOpen(true)} />
+     
     </View>
   );
 }

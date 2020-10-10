@@ -26,41 +26,40 @@ const style = StyleSheet.create({
   },
   statusBox: {
     padding: 30,
-    backgroundColor: "#2FD800",
+    backgroundColor: "#75BAFF",
     borderColor: "black",
     borderRadius: 5,
   },
 });
 
+const accounts = [
+  {
+    index: 1,
+    name: "Home",
+    number: "45643213",
+    personName: "Hasintha Kavindu",
+    address: "No.482/16, Makumbura south, kottawa",
+  },
+  {
+    index: 2,
+    name: "Office",
+    number: "4564898",
+    personName: "Nuwan Karunarathna",
+    address: "No.21, Borella",
+  },
+
+  {
+    index: 3,
+    name: "Home 2",
+    number: "78941335",
+    personName: "Nirmal",
+    address: "No.31, Pannipitiya",
+  },
+]
 export default function MeterReadingScreen() {
-  const [accounts, setAccounts] = useState([
-    {
-      name: "Home",
-      number: "45643213",
-      personName: "Hasintha Kavindu",
-      address: "No.482/16, Makumbura south, kottawa",
-    },
-    {
-      name: "Office",
-      number: "4564898",
-      personName: "Nuwan Karunarathna",
-      address: "No.21, Borella",
-    },
+ 
 
-    {
-      name: "Home 2",
-      number: "78941335",
-      personName: "Nirmal",
-      address: "No.31, Pannipitiya",
-    },
-  ]);
-
-  const [selectedAccount, setselectedAccount] = useState<any>({
-    name: "",
-    number: "",
-    personName: "",
-    address: "",
-  });
+  const [selectedAccount, setselectedAccount] = useState<any>(null);
   const [displayInputs, setdisplayInputs] = useState(false);
   const [dropdown, setdropdown] = useState(false);
 
@@ -79,10 +78,11 @@ export default function MeterReadingScreen() {
     hideDatePicker();
   };
 
-  const dropDownUse = (acountNo: any) => {
-    setselectedAccount(acountNo);
+  const dropDownUse = (acountNo: string) => {
+    const acc = accounts.find(a => a.index === parseInt(acountNo));
+    setselectedAccount({...acc});
     setdropdown(true);
-    console.log(selectedAccount);
+    console.log(acc);
   };
 
   useEffect(() => {
@@ -91,6 +91,10 @@ export default function MeterReadingScreen() {
     }
   }, [dropDownUse]);
 
+  useEffect(() => {
+    console.log(selectedAccount);
+  }, [selectedAccount]);
+
   const submit = () => {};
 
   return (
@@ -98,16 +102,16 @@ export default function MeterReadingScreen() {
       <Text>Select an account :</Text>
       <Picker
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-        onValueChange={(text: any) => dropDownUse(text)}
-        selectedValue={selectedAccount}
+        onValueChange={(index, i) => dropDownUse(index)}
+        
       >
-        <Picker.Item label="- select account -" value={null} />
-        {accounts.map((item: { name: any }) => (
-          <Picker.Item label={item.name} value={item} />
+        <Picker.Item label="- select account -" value={-1} />
+        {accounts.map((item) => (
+          <Picker.Item key={item.index} label={item.name} value={item.index} />
         ))}
       </Picker>
 
-      {displayInputs ? (
+      {displayInputs && selectedAccount ? (
         <View>
           <View style={style.statusBox}>
             <Text style={style.modalText}>
@@ -140,10 +144,10 @@ export default function MeterReadingScreen() {
             onConfirm={handleConfirm}
             onCancel={hideDatePicker}
           />
-          {"\n"}
+          
           <Button
             title="Submit"
-            color="green"
+            color="#1976D2"
             onPress={() => submit()}
           ></Button>
         </View>

@@ -104,7 +104,7 @@ export default function PublicComplaintScreen()  {
                       />
                     </View>
 
-                    <Button title="Submit" color="green" onPress={() => addComplaints()}></Button>
+                    <Button title="Submit" color="#1976D2" onPress={() => addComplaints()}></Button>
            
           </View>
         </View>

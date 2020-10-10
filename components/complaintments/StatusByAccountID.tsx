@@ -27,42 +27,55 @@ const style = StyleSheet.create({
       
       };
 
+    const complaints = [
+      {name: "Hasintha Kavindu", issueType: "Technical issue", complaint: "Very slow responding", accountNo: 1, complaintId: "456445643213"},
+        {name: "Nuwan Karunarathna", issueType: "Billing issue", complaint: "Bill balance is very high", accountNo: 1, complaintId: "8894564898"}
+    
+    ]
+
 export default function StatusByAccountID() {
 
     const [accounts, setAccounts] = useState([
-        {name: 'Home', number: '45643213', personName: 'Hasintha Kavindu', address: 'No.482/16, Makumbura south, kottawa'},
-        {name: 'Office', number: '4564898', personName: 'Nuwan Karunarathna', address: 'No.21, Borella'},
+        {index: 1, name: 'Home', number: '45643213', personName: 'Hasintha Kavindu', address: 'No.482/16, Makumbura south, kottawa'},
+        {index: 2, name: 'Office', number: '4564898', personName: 'Nuwan Karunarathna', address: 'No.21, Borella'},
     
-        {name: 'Home 2', number: '78941335', personName: 'Nirmal', address: 'No.31, Pannipitiya'}
+        {index: 3, name: 'Home 2', number: '78941335', personName: 'Nirmal', address: 'No.31, Pannipitiya'}
     
       ])
 
-      const [complaints, setComplaints] = useState<any>([
-        {name: "Hasintha Kavindu", issueType: "Technical issue", complaint: "Very slow responding", accountNo: "45643213", complaintId: "456445643213"},
-        {name: "Nuwan Karunarathna", issueType: "Billing issue", complaint: "Bill balance is very high", accountNo: "4564898", complaintId: "8894564898"}
-    ]);
+    //   const [complaints, setComplaints] = useState<any>([
+    //     {name: "Hasintha Kavindu", issueType: "Technical issue", complaint: "Very slow responding", accountNo: 1, complaintId: "456445643213"},
+    //     {name: "Nuwan Karunarathna", issueType: "Billing issue", complaint: "Bill balance is very high", accountNo: 1, complaintId: "8894564898"}
+    // ]);
 
       const [selectedAccount, setselectedAccount] = useState(null);
-      const [filterComplaints, setfilterComplaints] = useState(null);
+      const [filterComplaints, setfilterComplaints] = useState<any>(null);
+
+      const dropDownUse = (acountNo: string) => {
+        const acc = complaints.find(a => a.accountNo === parseInt(acountNo));
+        setfilterComplaints({...acc});
+      
+        console.log(acc);
+      };
 
       useEffect(() => {
           
-          setfilterComplaints(complaints.find((c: { accountNo: null; }) => c.accountNo === selectedAccount));
+        
             console.log(filterComplaints)
-      }, [selectedAccount])
+      }, [filterComplaints])
     
         return (
            <View>
              <Text>Account No :</Text>
-               <Picker   style={{ height: 40, borderColor: 'gray', borderWidth: 1 }} onValueChange={text => setselectedAccount(text)} selectedValue={selectedAccount}>
-               <Picker.Item label="- select account -" value="0" />
+               <Picker   style={{ height: 40, borderColor: 'gray', borderWidth: 1 }} onValueChange={(index, i) => dropDownUse(index)} selectedValue={selectedAccount}>
+               <Picker.Item label="- select account -" value={-1} />
                {accounts.map(item => (
-                   <Picker.Item label={item.name} value={item.number} />
+                   <Picker.Item key={item.index} label={item.name} value={item.index} />
                ))}
                  
                 </Picker> 
                 
-
+                {filterComplaints ? 
                 <FlatList
                 data={filterComplaints}
                 extraData={filterComplaints}
@@ -74,7 +87,8 @@ export default function StatusByAccountID() {
                     </View>
                 
                 )}
-                />
+                /> : ''}
+              
            </View>
         )
     
