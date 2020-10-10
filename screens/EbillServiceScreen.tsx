@@ -74,18 +74,18 @@ export default function EbillServiceScreen() {
         
         <View style={styles.inputform}>
         <View>
-            <Text style={styles.label}><Icon name='email' />Email</Text>
+            <Text style={styles.label}><Icon name='email'/>Email</Text>
             <TextInput
-              style={{ width:250, height: 40, borderColor: '#1976D2', borderWidth: 1, marginTop: 10, marginLeft: 30 }}
+              style={{ width:335, height: 40, borderColor: '#1976D2', borderWidth: 1, marginTop: 10, marginLeft: 30 }}
               onChangeText={text => onChangeEmail(text)}
               value={email}
             />
             </View>
 
             <View>
-            <Text style={styles.label}><Icon name='phone-iphone' />Mobile Number</Text>
+            <Text style={styles.label}><View><Icon name='phone-iphone'/></View>Mobile Number</Text>
             <TextInput
-              style={{ width:250, height: 40, borderColor: "#1976D2", borderWidth: 1, marginTop: 10, marginLeft: 30  }}
+              style={{ width:335, height: 40, borderColor: "#1976D2", borderWidth: 1, marginTop: 10, marginLeft: 30  }}
               onChangeText={text => onChangeMobile(text)}
               value={mobile}
               keyboardType={'numeric'}

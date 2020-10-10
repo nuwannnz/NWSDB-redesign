@@ -74,7 +74,6 @@ export default function AddAccountModal({acname = "text", acnumber = "text" } ) 
         margin: 20,
         backgroundColor: "white",
         borderRadius: 10,
-        padding: 35,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -85,6 +84,12 @@ export default function AddAccountModal({acname = "text", acnumber = "text" } ) 
       label: {
         padding: 15,
         paddingLeft: 0,
+        fontSize: 20,
+        textAlign: "left",      
+        color: "black"
+      },
+      deletelabel:{
+        padding: 15,
         fontSize: 20,
         textAlign: "left",      
         color: "black"
@@ -103,7 +108,7 @@ export default function AddAccountModal({acname = "text", acnumber = "text" } ) 
         fontSize: 20
       },
       modalTitleBackground: {
-        width: 250,
+        width: 360,
         padding: 15,
         backgroundColor: "#1976D2"
       },
@@ -226,7 +231,7 @@ export default function AddAccountModal({acname = "text", acnumber = "text" } ) 
             <Text style={styles.modalText}>Delete Account</Text>
             </View>
           
-            <Text style={styles.label}>Are you sure you want to delete {acname} account?</Text>
+            <Text style={styles.deletelabel}>Are you sure you want to delete {acname} account?</Text>
 
             
             <View style={styles.container_row}>

@@ -35,7 +35,6 @@ export default function ManageAccountScreen() {
       margin: 20,
       backgroundColor: "white",
       borderRadius: 10,
-      padding: 35,
       alignItems: "center",
       shadowColor: "#000",
       shadowOffset: {
@@ -88,9 +87,10 @@ export default function ManageAccountScreen() {
       fontSize: 20,
     },
     modalTitleBackground: {
-      width: 250,
+      width: 350,
       padding: 15,
-      backgroundColor: "#1976D2"
+      backgroundColor: "#1976D2",
+      marginLeft: 0
     },
     container_row: {
       display: "flex",
@@ -137,7 +137,7 @@ export default function ManageAccountScreen() {
             </View>
             
             <View>
-            <Text style={styles.label}><Icon name='portrait' />Account Name</Text>
+            <Text style={styles.label}><View><Icon name='portrait' /></View>Account Name</Text>
             <Text style={styles.label2}>(Ex: Home, Shop)</Text>
             <TextInput
               style={{ width:250, height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
