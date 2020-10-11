@@ -1,9 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image ,ScrollView,
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
   TextInput,
   TouchableOpacity,
-  ImageBackground, } from "react-native";
+  ImageBackground,
+} from "react-native";
 
 import { SCREENS } from "../constants/screens";
 import { BTN_STYLE, COLORS } from "../constants/styles";
@@ -59,10 +65,8 @@ export default function SignUpScreen() {
   const [pwdError, setPwdError] = useState(false);
   const [conformPwdError, setConformPwdError] = useState(false);
   const [matchPwd, setMatchPwd] = useState(false);
- 
 
   const validateSignOut = () => {
-
     let isValid = true;
     if (fullName.length > 0) {
       setFullNameError(false);
@@ -70,125 +74,198 @@ export default function SignUpScreen() {
       setFullNameError(true);
       isValid = false;
     }
-      if (name.length > 0) {
-        setNameError(false);
-      } else {
-        setNameError(true);
+    if (name.length > 0) {
+      setNameError(false);
+    } else {
+      setNameError(true);
       isValid = false;
-
-      }
-
-      if (email.length > 0) {
-        setEmailError(false);
-      } else {
-        setEmailError(true);
-      isValid = false;
-
-      }
-
-      if (nic.length > 0) {
-        setnicError(false);
-      } else {
-        setnicError(true);
-      isValid = false;
-
-      }
-
-      if (mobile.length > 0) {
-        setMobileError(false);
-      } else {
-        setMobileError(true);
-      isValid = false;
-
-      }
-
-      if (password.length > 0) {
-        setPwdError(false);
-      } else {
-        setPwdError(true);
-      isValid = false;
-
-      }
-
-      if (conformPwd.length > 0) {
-        setConformPwdError(false);
-      } else {
-        setConformPwdError(true);
-      isValid = false;
-
-      }
-    
-      if ( password !== conformPwd) {
-        setMatchPwd(true);
-        setConformPwdError(false);
-        isValid = false;
-
-      } else {
-        setMatchPwd(false);
-      }
-    
-    if (isValid) {
-      navigation.navigate(SCREENS.LOGIN_SCREEN);
     }
 
-  }
+    if (email.length > 0) {
+      setEmailError(false);
+    } else {
+      setEmailError(true);
+      isValid = false;
+    }
+
+    if (nic.length > 0) {
+      setnicError(false);
+    } else {
+      setnicError(true);
+      isValid = false;
+    }
+
+    if (mobile.length > 0) {
+      setMobileError(false);
+    } else {
+      setMobileError(true);
+      isValid = false;
+    }
+
+    if (password.length > 0) {
+      setPwdError(false);
+    } else {
+      setPwdError(true);
+      isValid = false;
+    }
+
+    if (conformPwd.length > 0) {
+      setConformPwdError(false);
+    } else {
+      setConformPwdError(true);
+      isValid = false;
+    }
+
+    if (password !== conformPwd) {
+      setMatchPwd(true);
+      setConformPwdError(false);
+      isValid = false;
+    } else {
+      setMatchPwd(false);
+    }
+
+    if (isValid) {
+      fetch("http://2d380df4fd11.ngrok.io/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          username: name,
+          email,
+          nic,
+          mobile,
+          password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+          if (result.status) {
+            navigation.navigate(SCREENS.LOGIN_SCREEN);
+          }
+        });
+    }
+  };
 
   return (
     <ScrollView>
       <View style={{ backgroundColor: "white", position: "relative" }}>
+        <Image
+          source={require("../assets/r1.png")}
+          style={{
+            width: 620,
+            height: 700,
+            position: "absolute",
+            bottom: 70,
+            left: 170,
+            right: 0,
+            zIndex: 800,
+          }}
+        />
 
-        <Image source={require("../assets/r1.png")} style={{width:620, height: 700, position: "absolute", bottom: 70, left: 170, right: 0, zIndex: 800}} />
-
-        <View style={[styles.container, {zIndex: 900}]}>
+        <View style={[styles.container, { zIndex: 900 }]}>
           <View>
             <Text style={styles.title}>Create Account</Text>
           </View>
-          <View style={{marginBottom: 5}}>
+          <View style={{ marginBottom: 5 }}>
             <Text style={styles.inputLabel}>Full Name</Text>
-            <TextInput placeholder="Ex: Anjana Kumari" style={styles.input} onChangeText={text=> {setFullName(text)}} />
-            {fullNameError ? <Text style={styles.errorMsg}>This field is required.</Text> : null}
+            <TextInput
+              placeholder="Ex: Anjana Kumari"
+              style={styles.input}
+              onChangeText={(text) => {
+                setFullName(text);
+              }}
+            />
+            {fullNameError ? (
+              <Text style={styles.errorMsg}>This field is required.</Text>
+            ) : null}
           </View>
-          <View style={{marginBottom: 5}}>
+          <View style={{ marginBottom: 5 }}>
             <Text style={styles.inputLabel}>Username</Text>
-            <TextInput placeholder="Ex: AnjanaK123" style={styles.input} onChangeText={text => { setName(text) }} />
-            {nameError ? <Text style={styles.errorMsg}>This field is required.</Text> : null}
+            <TextInput
+              placeholder="Ex: AnjanaK123"
+              style={styles.input}
+              onChangeText={(text) => {
+                setName(text);
+              }}
+            />
+            {nameError ? (
+              <Text style={styles.errorMsg}>This field is required.</Text>
+            ) : null}
           </View>
-          <View style={{marginBottom: 5}}>
+          <View style={{ marginBottom: 5 }}>
             <Text style={styles.inputLabel}>Email</Text>
             <TextInput
               placeholder="Ex: anjanak123@gmail.com"
               style={styles.input}
               keyboardType="email-address"
-              onChangeText={text => { setEmail(text) }}
+              onChangeText={(text) => {
+                setEmail(text);
+              }}
             />
-            {emailError ? <Text style={styles.errorMsg}>This field is required.</Text> : null}
+            {emailError ? (
+              <Text style={styles.errorMsg}>This field is required.</Text>
+            ) : null}
           </View>
-          <View style={{marginBottom: 5}}>
+          <View style={{ marginBottom: 5 }}>
             <Text style={styles.inputLabel}>NIC Number</Text>
-            <TextInput placeholder="Ex: 9930281613V" style={styles.input} onChangeText={text => { setNic(text) }} maxLength={12}/>
-            {nicError ? <Text style={styles.errorMsg}>This field is required.</Text> : null}
+            <TextInput
+              placeholder="Ex: 9930281613V"
+              style={styles.input}
+              onChangeText={(text) => {
+                setNic(text);
+              }}
+              maxLength={12}
+            />
+            {nicError ? (
+              <Text style={styles.errorMsg}>This field is required.</Text>
+            ) : null}
           </View>
-          <View style={{marginBottom: 5}}>
+          <View style={{ marginBottom: 5 }}>
             <Text style={styles.inputLabel}>Mobile Number</Text>
             <TextInput
               placeholder="Ex: 07XXXXXXXX"
               keyboardType="number-pad"
               style={styles.input}
-              onChangeText={text => { setMobile(text) }}
+              onChangeText={(text) => {
+                setMobile(text);
+              }}
               maxLength={10}
             />
-           {mobileError ? <Text style={styles.errorMsg}>This field is required.</Text> : null}
+            {mobileError ? (
+              <Text style={styles.errorMsg}>This field is required.</Text>
+            ) : null}
           </View>
-          <View style={{marginBottom: 5}}>
+          <View style={{ marginBottom: 5 }}>
             <Text style={styles.inputLabel}>Password</Text>
-            <TextInput secureTextEntry={true} style={styles.input}  onChangeText={text => { setPassword(text) }} />
-            {pwdError ? <Text style={styles.errorMsg}>This field is required.</Text> : null}
+            <TextInput
+              secureTextEntry={true}
+              style={styles.input}
+              onChangeText={(text) => {
+                setPassword(text);
+              }}
+            />
+            {pwdError ? (
+              <Text style={styles.errorMsg}>This field is required.</Text>
+            ) : null}
           </View>
-          <View style={{marginBottom: 5}}>
+          <View style={{ marginBottom: 5 }}>
             <Text style={styles.inputLabel}>Re-enter new password</Text>
-            <TextInput secureTextEntry={true} style={styles.input}  onChangeText={text => { setConformPwd(text) }}/>
-            {conformPwdError ? <Text style={styles.errorMsg}>This field is required.</Text> : null}
-            {matchPwd ? <Text style={styles.errorMsg}>Passwords are not matching.</Text> : null}
+            <TextInput
+              secureTextEntry={true}
+              style={styles.input}
+              onChangeText={(text) => {
+                setConformPwd(text);
+              }}
+            />
+            {conformPwdError ? (
+              <Text style={styles.errorMsg}>This field is required.</Text>
+            ) : null}
+            {matchPwd ? (
+              <Text style={styles.errorMsg}>Passwords are not matching.</Text>
+            ) : null}
           </View>
           <View>
             <View
@@ -226,8 +303,6 @@ export default function SignUpScreen() {
             </View>
           </View>
 
-
-
           <View>
             <View
               style={{
@@ -250,7 +325,7 @@ export default function SignUpScreen() {
             </View>
           </View>
         </View>
-        </View>
+      </View>
     </ScrollView>
   );
 }
