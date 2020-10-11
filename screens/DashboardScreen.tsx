@@ -12,6 +12,7 @@ import {
 import { SCREENS } from "../constants/screens";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { BTN_STYLE, COLORS } from "../constants/styles";
+import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +23,29 @@ const styles = StyleSheet.create({
   pageBtnGrid: {
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap",
     padding: 10,
+    width: "100%",
+    justifyContent: "space-between",
+    minHeight: 115,
+  },
+  pageBtnWrap: {
+    backgroundColor: COLORS.accentColor,
+    padding: 8,
+    borderRadius: 5,
+    flex: 1,
+    minWidth: "100%",
+    maxWidth: "30%",
+    minHeight: 100,
+    maxHeight: 100,
+  },
+  pageBtn: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
+    height: "100%",
+    width: "100%",
   },
   navIconBtn: {
     backgroundColor: COLORS.accentColor,
@@ -110,49 +132,85 @@ export default function DashboardScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.pageBtnGrid}>
-        {/* Add dashboard buttons here */}
-        <Button
-          title="Interruptions"
-          onPress={() => {
-            navigation.navigate(SCREENS.INTERRUPTIONS_SCREEN);
-          }}
-        />
-        <Button
-          title="Billing history"
-          onPress={() => {
-            navigation.navigate(SCREENS.BILLING_HISTORY_SCREEN);
-          }}
-        />
-        <Button
-          title="Complaint"
-          onPress={() => {
-            navigation.navigate(SCREENS.USER_COMPLAINT_SCREEN);
-          }}
-        />
-        <View>
-          <Button
-            title="Meter reading"
+      <View>
+        <View style={styles.pageBtnGrid}>
+          {/* Add dashboard buttons here */}
+
+          <TouchableNativeFeedback
+            style={styles.pageBtnWrap}
+            onPress={() => {
+              navigation.navigate(SCREENS.INTERRUPTIONS_SCREEN);
+            }}
+          >
+            <View style={styles.pageBtn}>
+              <Icon name="flash" color="#fff" size={30} />
+              <Text style={{ color: "#fff" }}>Interruptions</Text>
+            </View>
+          </TouchableNativeFeedback>
+
+          <TouchableNativeFeedback
+            style={styles.pageBtnWrap}
+            onPress={() => {
+              navigation.navigate(SCREENS.BILLING_HISTORY_SCREEN);
+            }}
+          >
+            <View style={styles.pageBtn}>
+              <Icon name="undo" color="#fff" size={30} />
+              <Text style={{ color: "#fff" }}>Billing history</Text>
+            </View>
+          </TouchableNativeFeedback>
+
+          <TouchableNativeFeedback
+            style={styles.pageBtnWrap}
+            onPress={() => {
+              navigation.navigate(SCREENS.USER_COMPLAINT_SCREEN);
+            }}
+          >
+            <View style={styles.pageBtn}>
+              <Icon name="bullhorn" color="#fff" size={30} />
+              <Text style={{ color: "#fff" }}>Complaint</Text>
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+
+        <View style={styles.pageBtnGrid}>
+          <TouchableNativeFeedback
+            style={styles.pageBtnWrap}
             onPress={() => {
               navigation.navigate(SCREENS.METER_READING_SCREEN);
             }}
-          />
+          >
+            <View style={styles.pageBtn}>
+              <Icon name="dashboard" color="#fff" size={30} />
+              <Text style={{ color: "#fff" }}>Meter reading</Text>
+            </View>
+          </TouchableNativeFeedback>
+
+          <TouchableNativeFeedback
+            style={styles.pageBtnWrap}
+            onPress={() => {
+              navigation.navigate(SCREENS.MANAGE_ACCOUNTS);
+            }}
+          >
+            <View style={styles.pageBtn}>
+              <Icon name="sign-in" color="#fff" size={30} />
+              <Text style={{ color: "#fff" }}>Accounts</Text>
+            </View>
+          </TouchableNativeFeedback>
+
+          <TouchableNativeFeedback
+            style={styles.pageBtnWrap}
+            onPress={() => {
+              navigation.navigate(SCREENS.EBILL_SERVICES);
+            }}
+          >
+            <View style={styles.pageBtn}>
+              <Icon name="euro" color="#fff" size={30} />
+              <Text style={{ color: "#fff" }}>E-Bill Service</Text>
+            </View>
+          </TouchableNativeFeedback>
         </View>
-
-        <Button
-          title="Accounts"
-          onPress={() => {
-            navigation.navigate(SCREENS.MANAGE_ACCOUNTS);
-          }}
-        />
-        <Button
-          title="E-Bill Service"
-          onPress={() => {
-            navigation.navigate(SCREENS.EBILL_SERVICES);
-          }}
-        />
       </View>
-
       <View
         style={{
           width: "100%",
