@@ -17,13 +17,20 @@ import SignUpScreen from "./screens/SignUpScreen";
 import LoginForm from "./screens/LoginForm";
 import ManageAccountScreen from "./screens/ManageAccountScreen";
 import EbillServiceScreen from "./screens/EbillServiceScreen";
+import ComplaintsNavigator from "./components/complaintments/ComplaintsNavigator";
+import MeterReadingScreen from "./screens/MeterReadingScreen";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitle: (props) => <Header {...props} />,
+          headerLeft: (props) => null,
+        }}
+      >
         <Stack.Screen
           name={SCREENS.START_SCREEN}
           component={StartScreen}
@@ -39,20 +46,40 @@ export default function App() {
           component={SignUpScreen}
           options={{ title: "NWSDB" }}
         />
+
+        <Stack.Screen
+          name={SCREENS.BILLING_HISTORY_SCREEN}
+          component={BillingHistoryScreen}
+          options={{ title: "Billing History" }}
+        />
+        <Stack.Screen
+          name={SCREENS.USER_COMPLAINT_SCREEN}
+          options={{ title: "Complaints" }}
+          component={ComplaintsNavigator}
+        />
+        <Stack.Screen
+          name={SCREENS.METER_READING_SCREEN}
+          options={{ title: "Meter Reader" }}
+          component={MeterReadingScreen}
+        />
         <Stack.Screen
           name={SCREENS.DASHBOARD_SCREEN}
+          options={{ title: "Dashboard" }}
           component={DashboardScreen}
         />
         <Stack.Screen
           name={SCREENS.INTERRUPTIONS_SCREEN}
+          options={{ title: "Interruptions" }}
           component={InterruptionsScreen}
         />
         <Stack.Screen
           name={SCREENS.MANAGE_ACCOUNTS}
+          options={{ title: "Manage accounts" }}
           component={ManageAccountScreen}
         />
         <Stack.Screen
           name={SCREENS.EBILL_SERVICES}
+          options={{ title: "EBill service" }}
           component={EbillServiceScreen}
         />
         <Stack.Screen

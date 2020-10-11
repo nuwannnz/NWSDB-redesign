@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   pageBtnGrid: {
     display: "flex",
     flexDirection: "row",
+    flexWrap: "wrap",
     padding: 10,
   },
   navIconBtn: {
@@ -109,10 +110,6 @@ export default function DashboardScreen() {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Dashboard</Text>
-      </View>
-
       <View style={styles.pageBtnGrid}>
         {/* Add dashboard buttons here */}
         <Button
@@ -121,6 +118,27 @@ export default function DashboardScreen() {
             navigation.navigate(SCREENS.INTERRUPTIONS_SCREEN);
           }}
         />
+        <Button
+          title="Billing history"
+          onPress={() => {
+            navigation.navigate(SCREENS.BILLING_HISTORY_SCREEN);
+          }}
+        />
+        <Button
+          title="Complaint"
+          onPress={() => {
+            navigation.navigate(SCREENS.USER_COMPLAINT_SCREEN);
+          }}
+        />
+        <View>
+          <Button
+            title="Meter reading"
+            onPress={() => {
+              navigation.navigate(SCREENS.METER_READING_SCREEN);
+            }}
+          />
+        </View>
+
         <Button
           title="Accounts"
           onPress={() => {
