@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import { API_URL } from "../constants/API";
 
 import { SCREENS } from "../constants/screens";
 import { BTN_STYLE, COLORS } from "../constants/styles";
@@ -125,7 +126,7 @@ export default function SignUpScreen() {
     }
 
     if (isValid) {
-      fetch("http://2d380df4fd11.ngrok.io/users/signup", {
+      fetch(`${API_URL}/users/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

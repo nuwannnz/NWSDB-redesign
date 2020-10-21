@@ -13,6 +13,7 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
+import { API_URL } from "../constants/API";
 import { SCREENS } from "../constants/screens";
 import { BTN_STYLE, COLORS } from "../constants/styles";
 
@@ -47,7 +48,7 @@ export default function LoginForm() {
       // }
       setModalVisible(false);
 
-      fetch("http://2d380df4fd11.ngrok.io/users/login", {
+      fetch(`${API_URL}/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
