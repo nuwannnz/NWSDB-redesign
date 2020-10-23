@@ -30,9 +30,8 @@ const styles = StyleSheet.create({
   },
   pageBtnWrap: {
     backgroundColor: COLORS.accentColor,
-    padding: 8,
+    padding: 0,
     borderRadius: 5,
-    flex: 1,
     minWidth: "100%",
     maxWidth: "30%",
     minHeight: 100,
