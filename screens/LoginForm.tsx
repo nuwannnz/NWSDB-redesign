@@ -26,6 +26,8 @@ export default function LoginForm() {
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleErrorMSg = () => {
     if (username.length > 0) {
       setUsernameError(false);
@@ -47,7 +49,7 @@ export default function LoginForm() {
       //   return;
       // }
       setModalVisible(false);
-
+      setIsLoading(true);
       fetch(`${API_URL}/users/login`, {
         method: "POST",
         headers: {
@@ -61,8 +63,11 @@ export default function LoginForm() {
         .then((res) => res.json())
         .then((result) => {
           console.log(result);
+          setIsLoading(false);
           if (result.isAuth) {
             navigation.navigate(SCREENS.DASHBOARD_SCREEN);
+          } else {
+            setModalVisible(true);
           }
         });
     }
@@ -70,6 +75,21 @@ export default function LoginForm() {
 
   return (
     <ScrollView>
+
+      {isLoading ?
+
+        <View style={[styles.center, { width: "100%", height: "75%", backgroundColor: "white" }]}>
+          <Image
+            style={{
+              width: 250,
+              height: 250,
+            }}
+            source={require("../assets/loading3.gif")}
+          />
+        </View>
+          : null
+          }
+
       <View style={{ backgroundColor: "white" }}>
         <View style={styles.container}>
           <View>

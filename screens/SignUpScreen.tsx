@@ -47,6 +47,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
+  center: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 export default function SignUpScreen() {
   const navigation = useNavigation();
@@ -66,6 +71,8 @@ export default function SignUpScreen() {
   const [pwdError, setPwdError] = useState(false);
   const [conformPwdError, setConformPwdError] = useState(false);
   const [matchPwd, setMatchPwd] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateSignOut = () => {
     let isValid = true;
@@ -126,6 +133,7 @@ export default function SignUpScreen() {
     }
 
     if (isValid) {
+      setIsLoading(true);
       fetch(`${API_URL}/users/signup`, {
         method: "POST",
         headers: {
@@ -143,6 +151,7 @@ export default function SignUpScreen() {
         .then((res) => res.json())
         .then((result) => {
           console.log(result);
+          setIsLoading(false);
           if (result.status) {
             navigation.navigate(SCREENS.LOGIN_SCREEN);
           }
@@ -152,6 +161,22 @@ export default function SignUpScreen() {
 
   return (
     <ScrollView>
+
+       {isLoading ?
+
+        <View style={[styles.center, { width: "100%", height: "75%", backgroundColor: "white" }]}>
+          <Image
+            style={{
+              width: 250,
+              height: 250,
+            }}
+            source={require("../assets/loading3.gif")}
+          />
+        </View>
+          : null
+          }
+
+
       <View style={{ backgroundColor: "white", position: "relative" }}>
         <Image
           source={require("../assets/r1.png")}
