@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.accentColor,
     padding: 8,
     borderRadius: 5,
-    flex: 1,
+
     minWidth: "100%",
     maxWidth: "30%",
     minHeight: 100,
